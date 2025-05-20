@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Same head content as index.html -->
+    <title>Find Freelancers | FreelanceHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* All the CSS from index.html */
+    </style>
+</head>
+<body>
+    <!-- Header (same as index.html) -->
+    <header>
+        <nav class="navbar">
+            <a href="index.html" class="logo">
+                <i class="fas fa-rocket"></i>
+                <span>FreelanceHub</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="find-work.html">Find Work</a>
+                <a href="find-freelancers.html" class="active">Find Freelancers</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="resources.html">Resources</a>
+            </div>
+            <div class="auth-buttons">
+                <button class="btn btn-outline" id="login-btn">Login</button>
+                <button class="btn btn-primary" id="register-btn">Sign Up</button>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Find Top Freelancers</h1>
+        <p>Browse our network of skilled professionals and find the perfect match for your project needs.</p>
+    </section>
+
+    <!-- Page Content -->
+    <div class="page-content">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <span>Find Freelancers</span>
+        </div>
+
+        <div class="freelancer-search-container">
+            <div class="freelancer-search-sidebar">
+                <div class="filter-section">
+                    <h3>Skills</h3>
+                    <div class="search-container" style="margin-bottom: 1rem;">
+                        <input type="text" placeholder="Search skills">
+                        <button><i class="fas fa-search"></i></button>
+                    </div>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="web-dev" checked>
+                            <label for="web-dev">Web Development</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="mobile-dev" checked>
+                            <label for="mobile-dev">Mobile Development</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="design" checked>
+                            <label for="design">Design</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="writing" checked>
+                            <label for="writing">Writing</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="marketing" checked>
+                            <label for="marketing">Marketing</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3>Hourly Rate</h3>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="rate1" checked>
+                            <label for="rate1">$10 - $30/hr</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="rate2" checked>
+                            <label for="rate2">$30 - $60/hr</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="rate3" checked>
+                            <label for="rate3">$60 - $100/hr</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="rate4" checked>
+                            <label for="rate4">$100+/hr</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3>Location</h3>
+                    <div class="filter-options">
+                        <div class="filter-option">
+                            <input type="checkbox" id="us" checked>
+                            <label for="us">United States</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="uk" checked>
+                            <label for="uk">United Kingdom</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="canada" checked>
+                            <label for="canada">Canada</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="australia" checked>
+                            <label for="australia">Australia</label>
+                        </div>
+                        <div class="filter-option">
+                            <input type="checkbox" id="remote" checked>
+                            <label for="remote">Remote</label>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-primary" style="width: 100%;">Apply Filters</button>
+            </div>
+
+            <div class="freelancer-search-main">
+                <div class="search-container" style="max-width: 100%; margin-bottom: 2rem;">
+                    <input type="text" placeholder="Search freelancers by name, skill, or keyword">
+                    <button><i class="fas fa-search"></i> Search</button>
+                </div>
+
+                <div class="freelancer-grid">
+                    <!-- Freelancer 1 -->
+                    <div class="freelancer-card">
+                        <div class="freelancer-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Jennifer Lee">
+                        </div>
+                        <div class="freelancer-info">
+                            <h4>Jennifer Lee</h4>
+                            <p>Web Developer</p>
+                            <div class="freelancer-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.7 (28 reviews)</span>
+                            </div>
+                            <div class="freelancer-skills">
+                                <span class="skill-tag">React</span>
+                                <span class="skill-tag">JavaScript</span>
+                                <span class="skill-tag">CSS</span>
+                            </div>
+                            <div class="freelancer-rate">
+                                $65/hr
+                            </div>
+                            <button class="btn btn-primary">View Profile</button>
+                        </div>
+                    </div>
+
+                    <!-- Freelancer 2 -->
+                    <div class="freelancer-card">
+                        <div class="freelancer-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="David Wilson">
+                        </div>
+                        <div class="freelancer-info">
+                            <h4>David Wilson</h4>
+                            <p>Graphic Designer</p>
+                            <div class="freelancer-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>5.0 (42 reviews)</span>
+                            </div>
+                            <div class="freelancer-skills">
+                                <span class="skill-tag">Photoshop</span>
+                                <span class="skill-tag">Illustrator</span>
+                                <span class="skill-tag">Branding</span>
+                            </div>
+                            <div class="freelancer-rate">
+                                $75/hr
+                            </div>
+                            <button class="btn btn-primary">View Profile</button>
+                        </div>
+                    </div>
+
+                    <!-- Freelancer 3 -->
+                    <div class="freelancer-card">
+                        <div class="freelancer-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Sarah Johnson">
+                        </div>
+                        <div class="freelancer-info">
+                            <h4>Sarah Johnson</h4>
+                            <p>Content Writer</p>
+                            <div class="freelancer-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="far fa-star"></i>
+                                <span>4.1 (35 reviews)</span>
+                            </div>
+                            <div class="freelancer-skills">
+                                <span class="skill-tag">Blogging</span>
+                                <span class="skill-tag">SEO</span>
+                                <span class="skill-tag">Copywriting</span>
+                            </div>
+                            <div class="freelancer-rate">
+                                $45/hr
+                            </div>
+                            <button class="btn btn-primary">View Profile</button>
+                        </div>
+                    </div>
+
+                    <!-- Freelancer 4 -->
+                    <div class="freelancer-card">
+                        <div class="freelancer-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/75.jpg" alt="Michael Brown">
+                        </div>
+                        <div class="freelancer-info">
+                            <h4>Michael Brown</h4>
+                            <p>Mobile Developer</p>
+                            <div class="freelancer-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.6 (52 reviews)</span>
+                            </div>
+                            <div class="freelancer-skills">
+                                <span class="skill-tag">Flutter</span>
+                                <span class="skill-tag">Dart</span>
+                                <span class="skill-tag">Firebase</span>
+                            </div>
+                            <div class="freelancer-rate">
+                                $85/hr
+                            </div>
+                            <button class="btn btn-primary">View Profile</button>
+                        </div>
+                    </div>
+
+                    <!-- Freelancer 5 -->
+                    <div class="freelancer-card">
+                        <div class="freelancer-avatar">
+                            <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Emily Davis">
+                        </div>
+                        <div class="freelancer-info">
+                            <h4>Emily Davis</h4>
+                            <p>Digital Marketer</p>
+                            <div class="freelancer-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <span>5.0 (38 reviews)</span>
+                            </div>
+                            <div class="freelancer-skills">
+                                <span class="skill-tag">SEO</span>
+                                <span class="skill-tag">PPC</span>
+                                <span class="skill-tag">Social Media</span>
+                            </div>
+                            <div class="freelancer-rate">
+                                $55/hr
+                            </div>
+                            <button class="btn btn-primary">View Profile</button>
+                        </div>
+                    </div>
+
+                    <!-- Freelancer 6 -->
+                    <div class="freelancer-card">
+                        <div class="freelancer-avatar">
+                            <img src="https://randomuser.me/api/portraits/men/88.jpg" alt="Robert Taylor">
+                        </div>
+                        <div class="freelancer-info">
+                            <h4>Robert Taylor</h4>
+                            <p>UI/UX Designer</p>
+                            <div class="freelancer-rating">
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star"></i>
+                                <i class="fas fa-star-half-alt"></i>
+                                <span>4.8 (47 reviews)</span>
+                            </div>
+                            <div class="freelancer-skills">
+                                <span class="skill-tag">Figma</span>
+                                <span class="skill-tag">Prototyping</span>
+                                <span class="skill-tag">User Research</span>
+                            </div>
+                            <div class="freelancer-rate">
+                                $70/hr
+                            </div>
+                            <button class="btn btn-primary">View Profile</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pagination">
+                    <button class="page-btn active">1</button>
+                    <button class="page-btn">2</button>
+                    <button class="page-btn">3</button>
+                    <button class="page-btn">4</button>
+                    <button class="page-btn">5</button>
+                    <button class="page-btn">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer (same as index.html) -->
+    <footer>
+        <!-- Footer content from index.html -->
+    </footer>
+
+    <!-- Modals (same as index.html) -->
+    <div class="modal" id="login-modal">
+        <!-- Login modal content from index.html -->
+    </div>
+
+    <div class="modal" id="register-modal">
+        <!-- Register modal content from index.html -->
+    </div>
+
+    <!-- JavaScript (same as index.html) -->
+    <script>
+        // All JavaScript from index.html
+    </script>
+</body>
+</html>
