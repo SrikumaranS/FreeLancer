@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources | FreelanceHub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* CSS Variables */
+        :root {
+            --primary-color: #3498db;
+            --text-color: #2c3e50;
+            --light-text: #7f8c8d;
+            --white: #ffffff;
+            --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        /* Base Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f5f7fa;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .page-header {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .page-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .page-content {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .breadcrumb {
+            margin-bottom: 30px;
+            font-size: 14px;
+            color: var(--light-text);
+        }
+        
+        .breadcrumb a {
+            color: var(--primary-color);
+            text-decoration: none;
+        }
+        
+        .breadcrumb span {
+            margin: 0 5px;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 600;
+            text-align: center;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+        }
+        
+        .btn-outline {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 2px solid var(--primary-color);
+        }
+        
+        .btn:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        /* Navbar Styles */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background-color: var(--white);
+            box-shadow: var(--box-shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-color);
+            text-decoration: none;
+        }
+        
+        .logo i {
+            margin-right: 10px;
+            color: var(--primary-color);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .nav-links a {
+            color: var(--text-color);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-links a.active {
+            color: var(--primary-color);
+            font-weight: 600;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 15px;
+        }
+        
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--text-color);
+        }
+
+        /* Resources Page Specific Styles */
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-size: 32px;
+            margin-bottom: 15px;
+            color: var(--primary-color);
+        }
+
+        .section-title p {
+            font-size: 18px;
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .resource-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .resource-image {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 30px;
+            text-align: center;
+            font-size: 40px;
+        }
+
+        .resource-content {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resource-content h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .resource-content p {
+            color: var(--light-text);
+            margin-bottom: 20px;
+            flex: 1;
+        }
+
+        .resource-meta {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            font-size: 14px;
+            color: var(--light-text);
+        }
+
+        .resource-meta span {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .resource-meta i {
+            font-size: 14px;
+        }
+
+        /* Newsletter Section */
+        .newsletter-section {
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 60px 0;
+            margin-top: 50px;
+        }
+
+        .newsletter-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter-content h3 {
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .newsletter-content p {
+            font-size: 18px;
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .newsletter-form {
+            display: flex;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px 0 0 5px;
+            font-size: 16px;
+        }
+
+        .newsletter-form button {
+            padding: 0 25px;
+            border-radius: 0 5px 5px 0;
+            border: none;
+            background-color: #2c3e50;
+            color: var(--white);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .newsletter-form button:hover {
+            background-color: #1a252f;
+        }
+
+        /* Footer Styles */
+        .footer {
+            background-color: #2c3e50;
+            color: var(--white);
+            padding: 60px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .footer-section {
+            margin-bottom: 20px;
+        }
+
+        .footer-section h4 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-section h4::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background-color: var(--primary-color);
+        }
+
+        .footer-section p {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-section ul li a {
+            color: var(--white);
+            text-decoration: none;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .footer-section ul li a:hover {
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: var(--transition);
+            color: var(--white);
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .resources-grid {
+                grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-title h2 {
+                font-size: 28px;
+            }
+            
+            .section-title p {
+                font-size: 16px;
+            }
+            
+            .newsletter-content h3 {
+                font-size: 24px;
+            }
+            
+            .newsletter-content p {
+                font-size: 16px;
+            }
+
+            /* Mobile Navigation */
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                position: absolute;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background-color: var(--white);
+                padding: 20px;
+                box-shadow: var(--box-shadow);
+            }
+            
+            .nav-links.show {
+                display: flex;
+            }
+            
+            .mobile-menu-btn {
+                display: block;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+            
+            .newsletter-form input {
+                border-radius: 5px;
+                margin-bottom: 10px;
+            }
+            
+            .newsletter-form button {
+                border-radius: 5px;
+                padding: 15px;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+         <nav class="navbar">
+            <a href="index.html" class="logo">
+                <i class="fas fa-rocket"></i>
+                <span>FreelanceHub</span>
+            </a>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="find-work.html">Find Work</a>
+                <a href="find-freelancers.html" class="active">Find Freelancers</a>
+                <a href="how-it-works.html">How It Works</a>
+                <a href="resources.html">Resources</a>
+            </div>
+            <div class="auth-buttons">
+                <button class="btn btn-outline" id="login-btn">Login</button>
+                <button class="btn btn-primary" id="register-btn">Sign Up</button>
+            </div>
+            <button class="mobile-menu-btn" id="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </nav>
+    </header>
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1>Freelance Resources</h1>
+        <p>Learn, grow, and succeed with our collection of guides, articles, and tools for freelancers and clients.</p>
+    </section>
+
+    <!-- Page Content -->
+    <div class="page-content">
+        <div class="breadcrumb">
+            <a href="index.html">Home</a>
+            <span>/</span>
+            <span>Resources</span>
+        </div>
+
+        <div class="section-title">
+            <h2>For Freelancers</h2>
+            <p>Resources to help you grow your freelance business and succeed on our platform.</p>
+        </div>
+
+        <div class="resources-grid">
+            <!-- Resource 1 -->
+            <div class="resource-card">
+                <div class="resource-image">
+                    <i class="fas fa-file-alt"></i>
+                </div>
+                <div class="resource-content">
+                    <h3>How to Write Winning Proposals</h3>
+                    <p>Learn the secrets to crafting proposals that get you hired, with templates and examples from top freelancers.</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-clock"></i> 10 min read</span>
+                        <span><i class="fas fa-calendar-alt"></i> May 15, 2023</span>
+                    </div>
+                    <button class="btn btn-primary" style="margin-top: 1rem;">Read Article</button>
+                </div>
+            </div>
+
+            <!-- Resource 2 -->
+            <div class="resource-card">
+                <div class="resource-image">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <div class="resource-content">
+                    <h3>Pricing Your Freelance Services</h3>
+                    <p>A comprehensive guide to setting rates that reflect your value while remaining competitive in the market.</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-clock"></i> 15 min read</span>
+                        <span><i class="fas fa-calendar-alt"></i> April 28, 2023</span>
+                    </div>
+                    <button class="btn btn-primary" style="margin-top: 1rem;">Read Article</button>
+                </div>
+            </div>
+
+            <!-- Resource 3 -->
+            <div class="resource-card">
+                <div class="resource-image">
+                    <i class="fas fa-user-tie"></i>
+                </div>
+                <div class="resource-content">
+                    <h3>Client Communication Best Practices</h3>
+                    <p>Master the art of professional communication to build strong client relationships and avoid misunderstandings.</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-clock"></i> 12 min read</span>
+                        <span><i class="fas fa-calendar-alt"></i> April 10, 2023</span>
+                    </div>
+                    <button class="btn btn-primary" style="margin-top: 1rem;">Read Article</button>
+                </div>
+            </div>
+
+            <!-- Resource 4 -->
+            <div class="resource-card">
+                <div class="resource-image">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                </div>
+                <div class="resource-content">
+                    <h3>Freelancer Tax Guide</h3>
+                    <p>Everything you need to know about taxes as a freelancer, including deductions, quarterly payments, and record keeping.</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-clock"></i> 20 min read</span>
+                        <span><i class="fas fa-calendar-alt"></i> March 22, 2023</span>
+                    </div>
+                    <button class="btn btn-primary" style="margin-top: 1rem;">Read Article</button>
+                </div>
+            </div>
+
+            <!-- Resource 5 -->
+            <div class="resource-card">
+                <div class="resource-image">
+                    <i class="fas fa-tools"></i>
+                </div>
+                <div class="resource-content">
+                    <h3>Essential Tools for Freelancers</h3>
+                    <p>Our curated list of must-have tools to help you manage your business, productivity, and client work efficiently.</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-clock"></i> 18 min read</span>
+                        <span><i class="fas fa-calendar-alt"></i> March 15, 2023</span>
+                    </div>
+                    <button class="btn btn-primary" style="margin-top: 1rem;">Read Article</button>
+                </div>
+            </div>
+
+            <!-- Resource 6 -->
+            <div class="resource-card">
+                <div class="resource-image">
+                    <i class="fas fa-balance-scale"></i>
+                </div>
+                <div class="resource-content">
+                    <h3>Freelance Contracts 101</h3>
+                    <p>Protect yourself and your business with solid contracts. Learn what to include and get free template downloads.</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-clock"></i> 14 min read</span>
+                        <span><i class="fas fa-calendar-alt"></i> February 28, 2023</span>
+                    </div>
+                    <button class="btn btn-primary" style="margin-top: 1rem;">Read Article</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title" style="margin-top: 3rem;">
+            <h2>For Clients</h2>
+            <p>Resources to help you find and work with the best freelancers for your projects.</p>
+        </div>
+
+        <div class="resources-grid">
+            <!-- Resource 1 -->
+            <div class="resource-card">
+                <div class="resource-image">
+                    <i class="fas fa-search"></i>
+                </div>
+                <div class="resource-content">
+                    <h3>How to Find the Right Freelancer</h3>
+                    <p>A step-by-step guide to evaluating freelancers, reviewing portfolios, and making the best hiring decision.</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-clock"></i> 8 min read</span>
+                        <span><i class="fas fa-calendar-alt"></i> May 5, 2023</span>
+                    </div>
+                    <button class="btn btn-primary" style="margin-top: 1rem;">Read Article</button>
+                </div>
+            </div>
+
+            <!-- Resource 2 -->
+            <div class="resource-card">
+                <div class="resource-image">
+                    <i class="fas fa-file-contract"></i>
+                </div>
+                <div class="resource-content">
+                    <h3>Writing Effective Project Briefs</h3>
+                    <p>Learn how to create clear, detailed project descriptions that attract qualified freelancers and set your project up for success.</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-clock"></i> 10 min read</span>
+                        <span><i class="fas fa-calendar-alt"></i> April 20, 2023</span>
+                    </div>
+                    <button class="btn btn-primary" style="margin-top: 1rem;">Read Article</button>
+                </div>
+            </div>
+
+            <!-- Resource 3 -->
+            <div class="resource-card">
+                <div class="resource-image">
+                    <i class="fas fa-handshake"></i>
+                </div>
+                <div class="resource-content">
+                    <h3>Managing Freelance Relationships</h3>
+                    <p>Best practices for working with freelancers, including communication, feedback, and long-term collaboration.</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-clock"></i> 12 min read</span>
+                        <span><i class="fas fa-calendar-alt"></i> April 5, 2023</span>
+                    </div>
+                    <button class="btn btn-primary" style="margin-top: 1rem;">Read Article</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="section-title" style="margin-top: 3rem;">
+            <h2>Free Templates & Tools</h2>
+            <p>Downloadable resources to make your freelance journey easier.</p>
+        </div>
+
+        <div class="resources-grid">
+            <!-- Template 1 -->
+            <div class="resource-card">
+                <div class="resource-image">
+                    <i class="fas fa-file-word"></i>
+                </div>
+                <div class="resource-content">
+                    <h3>Freelance Contract Template</h3>
+                    <p>A comprehensive contract template that protects both parties and clearly outlines project terms.</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-file-download"></i> DOCX</span>
+                        <span><i class="fas fa-file-alt"></i> 5 pages</span>
+                    </div>
+                    <button class="btn btn-primary" style="margin-top: 1rem;">Download</button>
+                </div>
+            </div>
+
+            <!-- Template 2 -->
+            <div class="resource-card">
+                <div class="resource-image">
+                    <i class="fas fa-file-excel"></i>
+                </div>
+                <div class="resource-content">
+                    <h3>Invoice Template</h3>
+                    <p>Professional invoice template with automatic calculations for easy billing and record keeping.</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-file-download"></i> XLSX</span>
+                        <span><i class="fas fa-file-alt"></i> 1 sheet</span>
+                    </div>
+                    <button class="btn btn-primary" style="margin-top: 1rem;">Download</button>
+                </div>
+            </div>
+
+            <!-- Template 3 -->
+            <div class="resource-card">
+                <div class="resource-image">
+                    <i class="fas fa-file-powerpoint"></i>
+                </div>
+                <div class="resource-content">
+                    <h3>Portfolio Presentation Template</h3>
+                    <p>A sleek, customizable PowerPoint template to showcase your work to potential clients.</p>
+                    <div class="resource-meta">
+                        <span><i class="fas fa-file-download"></i> PPTX</span>
+                        <span><i class="fas fa-file-alt"></i> 10 slides</span>
+                    </div>
+                    <button class="btn btn-primary" style="margin-top: 1rem;">Download</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="newsletter-content">
+            <h3>Stay Updated with FreelanceHub</h3>
+            <p>Subscribe to our newsletter for the latest resources, tips, and platform updates.</p>
+            <form class="newsletter-form">
+                <input type="email" placeholder="Enter your email address" required>
+                <button type="submit" class="btn btn-primary">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h4>FreelanceHub</h4>
+                <p>Connecting talented freelancers with clients worldwide since 2020.</p>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-section">
+                <h4>For Freelancers</h4>
+                <ul>
+                    <li><a href="#">How to Get Started</a></li>
+                    <li><a href="#">Finding Work</a></li>
+                    <li><a href="#">Member Success Stories</a></li>
+                    <li><a href="#">Freelancer Resources</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>For Clients</h4>
+                <ul>
+                    <li><a href="#">How to Hire</a></li>
+                    <li><a href="#">Post a Project</a></li>
+                    <li><a href="#">Client Resources</a></li>
+                    <li><a href="#">Enterprise Solutions</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2023 FreelanceHub. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.classList.toggle('show');
+        });
+
+        // Placeholder for login/register functionality
+        document.getElementById('login-btn').addEventListener('click', function() {
+            alert('Login functionality would go here');
+        });
+
+        document.getElementById('register-btn').addEventListener('click', function() {
+            alert('Registration functionality would go here');
+        });
+    </script>
+</body>
+</html>
