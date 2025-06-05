@@ -1,67 +1,38 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.7.1/firebase-app.js";
-import {
-    getAuth,
-    createUserWithEmailAndPassword,
-    signInWithEmailAndPassword,
-} from "https://www.gstatic.com/firebasejs/11.7.1/firebase-auth.js";
+// Signup
+const signupForm = document.getElementById('signup-form');
+if (signupForm) {
+  signupForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('signup-name').value;
+    const email = document.getElementById('signup-email').value;
+    const password = document.getElementById('signup-password').value;
 
-const firebaseConfig = {
-    apiKey: "AIzaSyCc5qSxrVoQ1uYml9tnn5vaaUQw2FGEAqI",
-    authDomain: "movie-ea329.firebaseapp.com",
-    projectId: "movie-ea329",
-    storageBucket: "movie-ea329.appspot.com",
-    messagingSenderId: "465701610247",
-    appId: "1:465701610247:web:b46faeedff34a1d4701ba2",
-    measurementId: "G-4VXJ6L9J42",
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-
-// Registration functionality
-const registerButton = document.getElementById("submit");
-if (registerButton) {
-    registerButton.addEventListener("click", function (event) {
-        event.preventDefault();
-
-        const name = document.getElementById("name").value;
-        const email = document.getElementById("email").value;
-        const password = document.getElementById("password").value;
-        const confirmPassword = document.getElementById("confirm-password").value;
-
-        if (password !== confirmPassword) {
-            alert("Passwords do not match!");
-            return;
-        }
-
-        createUserWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                alert("Account created successfully!");
-                window.location.href = "login.html";
-            })
-            .catch((error) => {
-                alert("Registration failed: " + error.message);
-            });
+    const res = await fetch('http://localhost:3000/signup', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, password })
     });
+
+    const data = await res.json();
+    alert(data.success ? 'Signup Successful!' : 'Signup Failed: ' + data.message);
+  });
 }
 
-// Login functionality
-const loginButton = document.getElementById("login");
-if (loginButton) {
-    loginButton.addEventListener("click", function (event) {
-        event.preventDefault();
+// Login
+const loginForm = document.getElementById('login-form');
+if (loginForm) {
+  loginForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = document.getElementById('login-email').value;
+    const password = document.getElementById('login-password').value;
 
-        const email = document.getElementById("lemail").value;
-        const password = document.getElementById("lpassword").value;
-
-        signInWithEmailAndPassword(auth, email, password)
-            .then((userCredential) => {
-                alert("Login successful!");
-                window.location.href = "index.html";
-            })
-            .catch((error) => {
-                alert("Login failed: " + error.message);
-            });
+    const res = await fetch('http://localhost:3000/login', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ email, password })
     });
+
+    const data = await res.json();
+    alert(data.success ? 'Login Successful!' : 'Login Failed: ' + data.message);
+  });
 }
