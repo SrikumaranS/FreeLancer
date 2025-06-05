@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Find Freelancers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="hiring.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Find Freelancers</h1>
+            <p>Browse and hire skilled professionals</p>
+        </header>
+
+        <!-- Search and Filters -->
+        <div class="search-container">
+            <input type="text" id="search-input" placeholder="Search by skill, name...">
+            <button id="search-btn"><i class="fas fa-search"></i></button>
+            
+            <div class="filters">
+                <select id="skill-filter">
+                    <option value="">All Skills</option>
+                    <option value="Web Development">Web Development</option>
+                    <option value="Graphic Design">Graphic Design</option>
+                    <option value="SEO">SEO</option>
+                </select>
+                <select id="rate-filter">
+                    <option value="">Hourly Rate</option>
+                    <option value="0-25">$0 - $25</option>
+                    <option value="25-50">$25 - $50</option>
+                    <option value="50+">$50+</option>
+                </select>
+                <select id="rating-filter">
+                    <option value="">Minimum Rating</option>
+                    <option value="4">4+ Stars</option>
+                    <option value="3">3+ Stars</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Freelancer Listings -->
+        <div id="freelancers-container" class="freelancers-grid">
+            <!-- Freelancer cards will be inserted here by JavaScript -->
+        </div>
+    </div>
+
+    <script src="hiring.js"></script>
+</body>
+</html>

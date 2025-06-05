@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freelancer Profile</title>
+    <link rel="stylesheet" href="profile.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Create Your Freelancer Profile</h1>
+            <p>Showcase your skills and projects to attract clients</p>
+        </header>
+
+        <div class="profile-container">
+            <div class="profile-header">
+                <div class="profile-pic-container">
+                    <img id="profile-pic" src="https://via.placeholder.com/150" alt="Profile Picture">
+                    <button id="upload-btn" class="btn">Upload Photo</button>
+                    <input type="file" id="profile-upload" accept="image/*" style="display: none;">
+                </div>
+                <div class="profile-basic-info">
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="John Doe">
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Professional Title</label>
+                        <input type="text" id="title" placeholder="Web Developer">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location</label>
+                        <input type="text" id="location" placeholder="New York, USA">
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <h2>About Me</h2>
+                <textarea id="about" rows="4" placeholder="Tell clients about yourself, your skills, and experience..."></textarea>
+            </div>
+
+            <div class="profile-section">
+                <h2>Skills</h2>
+                <div class="skills-container">
+                    <div class="skill-input">
+                        <input type="text" id="skill-input" placeholder="Add a skill (e.g., JavaScript)">
+                        <button id="add-skill" class="btn">Add</button>
+                    </div>
+                    <div id="skills-list" class="skills-list">
+                        <!-- Skills will be added here dynamically -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <h2>Portfolio Projects</h2>
+                <button id="add-project" class="btn">Add Project</button>
+                <div id="projects-container">
+                    <!-- Projects will be added here dynamically -->
+                </div>
+            </div>
+
+            <div class="profile-section">
+                <h2>Contact Information</h2>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="your.email@example.com">
+                </div>
+                <div class="form-group">
+                    <label for="phone">Phone (optional)</label>
+                    <input type="tel" id="phone" placeholder="+1 234 567 890">
+                </div>
+                <div class="form-group">
+                    <label for="website">Website/Portfolio (optional)</label>
+                    <input type="url" id="website" placeholder="https://yourportfolio.com">
+                </div>
+                <div class="form-group">
+                    <label for="linkedin">LinkedIn (optional)</label>
+                    <input type="url" id="linkedin" placeholder="https://linkedin.com/in/yourprofile">
+                </div>
+                <div class="form-group">
+                    <label for="github">GitHub (optional)</label>
+                    <input type="url" id="github" placeholder="https://github.com/yourusername">
+                </div>
+            </div>
+
+            <div class="form-actions">
+                <button id="save-profile" class="btn btn-primary">Save Profile</button>
+                <button id="preview-profile" class="btn">Preview Profile</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Modal -->
+    <div id="project-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add Project</h2>
+            <div class="form-group">
+                <label for="project-title">Project Title</label>
+                <input type="text" id="project-title" placeholder="E-commerce Website">
+            </div>
+            <div class="form-group">
+                <label for="project-description">Description</label>
+                <textarea id="project-description" rows="4" placeholder="Describe the project, your role, technologies used..."></textarea>
+            </div>
+            <div class="form-group">
+                <label for="project-skills">Skills Used</label>
+                <input type="text" id="project-skills" placeholder="React, Node.js, MongoDB">
+            </div>
+            <div class="form-group">
+                <label for="project-link">Project URL (optional)</label>
+                <input type="url" id="project-link" placeholder="https://example.com">
+            </div>
+            <div class="form-group">
+                <label for="project-image">Project Image (optional)</label>
+                <input type="file" id="project-image" accept="image/*">
+            </div>
+            <button id="save-project" class="btn btn-primary">Save Project</button>
+        </div>
+    </div>
+
+    <!-- Preview Modal -->
+    <div id="preview-modal" class="modal">
+        <div class="modal-content preview-content">
+            <span class="close">&times;</span>
+            <h2>Profile Preview</h2>
+            <div id="profile-preview">
+                <!-- Preview content will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="profile.js"></script>
+</body>
+</html>
