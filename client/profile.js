@@ -205,14 +205,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // Save profile
-    saveProfileBtn.addEventListener('click', function() {
-        const profileData = getProfileData();
-        // In a real app, you would send this to your backend
-        console.log('Profile data to save:', profileData);
-        alert('Profile saved successfully!');
-    });
-    
     // Preview profile
     previewProfileBtn.addEventListener('click', function() {
         const profileData = getProfileData();
@@ -226,6 +218,8 @@ document.addEventListener('DOMContentLoaded', function() {
             title: document.getElementById('title').value,
             location: document.getElementById('location').value,
             about: document.getElementById('about').value,
+            rate: parseInt(document.getElementById('rate').value) || 0,
+            rating: 0, // Default value
             skills: [...skills],
             projects: [...projects],
             contact: {
@@ -236,8 +230,32 @@ document.addEventListener('DOMContentLoaded', function() {
                 github: document.getElementById('github').value
             },
             profilePic: profilePic.src
+            
         };
     }
+    
+    // Save profile (single event listener)
+    saveProfileBtn.addEventListener('click', function() {
+        const profileData = getProfileData();
+        
+        // Get existing freelancers or create empty array
+        const freelancers = JSON.parse(localStorage.getItem('freelancerProfiles')) || [];
+        
+        // Check if this profile already exists (by name)
+        const existingIndex = freelancers.findIndex(f => f.name === profileData.name);
+        
+        if (existingIndex >= 0) {
+            // Update existing profile
+            freelancers[existingIndex] = profileData;
+        } else {
+            // Add new profile
+            freelancers.push(profileData);
+        }
+        
+        // Save back to localStorage
+        localStorage.setItem('freelancerProfiles', JSON.stringify(freelancers));
+        alert('Profile saved successfully!');
+    });
     
     function renderPreview(profileData) {
         const previewContainer = document.getElementById('profile-preview');
@@ -247,6 +265,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 <h1 style="color: #2c3e50; margin-bottom: 5px;">${profileData.name}</h1>
                 <h2 style="color: #3498db; margin-bottom: 10px; font-size: 1.5rem;">${profileData.title}</h2>
                 <p style="color: #7f8c8d;"><i class="fas fa-map-marker-alt"></i> ${profileData.location}</p>
+                <p>Hourly Rate: $${profileData.rate}/hr</p>
             </div>
             
             <div style="margin-bottom: 30px;">
