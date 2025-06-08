@@ -1,507 +1,14 @@
+<!-- find-work.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Same head content as index.html -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Find Work | FreelanceHub</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Base Styles (from index.html) */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-
-body {
-    background-color: #f8f9fa;
-    color: #333;
-    line-height: 1.6;
-}
-
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-.btn {
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    border: none;
-    font-size: 1rem;
-}
-
-.btn-primary {
-    background-color: #4a6bff;
-    color: white;
-}
-
-.btn-primary:hover {
-    background-color: #3a5bef;
-}
-
-.btn-outline {
-    background-color: transparent;
-    border: 1px solid #4a6bff;
-    color: #4a6bff;
-}
-
-.btn-outline:hover {
-    background-color: #4a6bff;
-    color: white;
-}
-
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-/* Header/Navbar Styles */
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: white;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    font-size: 1.5rem;
-    font-weight: 700;
-    color: #4a6bff;
-}
-
-.logo i {
-    margin-right: 0.5rem;
-    font-size: 1.8rem;
-}
-
-.nav-links {
-    display: flex;
-    gap: 2rem;
-}
-
-.nav-links a {
-    font-weight: 500;
-    color: #555;
-    transition: color 0.3s ease;
-}
-
-.nav-links a:hover, .nav-links a.active {
-    color: #4a6bff;
-}
-
-.auth-buttons {
-    display: flex;
-    gap: 1rem;
-}
-
-.mobile-menu-btn {
-    display: none;
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    color: #4a6bff;
-    cursor: pointer;
-}
-
-/* Page Header */
-.page-header {
-    padding: 4rem 2rem;
-    text-align: center;
-    background: linear-gradient(135deg, #4a6bff, #6a4aff);
-    color: white;
-}
-
-.page-header h1 {
-    font-size: 2.5rem;
-    margin-bottom: 1rem;
-}
-
-.page-header p {
-    font-size: 1.2rem;
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-/* Breadcrumb */
-.breadcrumb {
-    padding: 1rem 0;
-    font-size: 0.9rem;
-    color: #666;
-}
-
-.breadcrumb a {
-    color: #4a6bff;
-}
-
-.breadcrumb span {
-    margin: 0 0.5rem;
-}
-
-/* Section Title */
-.section-title {
-    text-align: center;
-    margin: 3rem 0;
-}
-
-.section-title h2 {
-    font-size: 2rem;
-    margin-bottom: 1rem;
-    color: #333;
-}
-
-.section-title p {
-    color: #666;
-    max-width: 700px;
-    margin: 0 auto;
-}
-
-/* Find Work Page Specific Styles */
-.job-search-container {
-    display: flex;
-    gap: 2rem;
-    margin: 2rem 0;
-}
-
-.job-search-sidebar {
-    width: 250px;
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-    height: fit-content;
-}
-
-.job-search-main {
-    flex: 1;
-}
-
-.filter-section {
-    margin-bottom: 1.5rem;
-}
-
-.filter-section h3 {
-    font-size: 1.1rem;
-    margin-bottom: 1rem;
-    color: #333;
-}
-
-.filter-options {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-}
-
-.filter-option {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.filter-option input {
-    cursor: pointer;
-}
-
-.filter-option label {
-    cursor: pointer;
-    color: #555;
-}
-
-.search-container {
-    display: flex;
-    margin-bottom: 1.5rem;
-    background: white;
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.search-container input {
-    flex: 1;
-    padding: 0.75rem 1rem;
-    border: none;
-    outline: none;
-    font-size: 1rem;
-}
-
-.search-container button {
-    padding: 0 1.5rem;
-    background-color: #4a6bff;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-weight: 600;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.search-container button:hover {
-    background-color: #3a5bef;
-}
-
-.job-list {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-}
-
-.job-card {
-    background: white;
-    padding: 1.5rem;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-}
-
-.job-type {
-    display: inline-block;
-    padding: 0.25rem 0.75rem;
-    background-color: #e6f0ff;
-    color: #4a6bff;
-    border-radius: 4px;
-    font-size: 0.8rem;
-    font-weight: 600;
-    margin-bottom: 1rem;
-}
-
-.job-header {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 1rem;
-}
-
-.job-title {
-    font-size: 1.3rem;
-    color: #333;
-    margin-bottom: 0.25rem;
-}
-
-.job-company {
-    color: #666;
-    font-size: 0.95rem;
-}
-
-.job-budget {
-    font-weight: 600;
-    color: #4a6bff;
-}
-
-.job-description {
-    color: #555;
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-}
-
-.job-details {
-    display: flex;
-    gap: 1.5rem;
-    margin-bottom: 1.5rem;
-    color: #666;
-    font-size: 0.9rem;
-}
-
-.job-detail {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-}
-
-.job-skills {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.5rem;
-    margin-bottom: 1.5rem;
-}
-
-.tag {
-    background-color: #f0f2f5;
-    padding: 0.25rem 0.75rem;
-    border-radius: 4px;
-    font-size: 0.85rem;
-    color: #555;
-}
-
-.job-actions {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    color: #666;
-    font-size: 0.9rem;
-}
-
-.pagination {
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    margin-top: 2rem;
-}
-
-.page-btn {
-    padding: 0.5rem 1rem;
-    border: 1px solid #ddd;
-    background: white;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.page-btn:hover, .page-btn.active {
-    background-color: #4a6bff;
-    color: white;
-    border-color: #4a6bff;
-}
-
-/* Footer Styles */
-footer {
-    background-color: #2c3e50;
-    color: white;
-    padding: 3rem 0 1.5rem;
-}
-
-.footer-content {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1rem;
-}
-
-.footer-section h4 {
-    font-size: 1.2rem;
-    margin-bottom: 1.5rem;
-    color: #fff;
-}
-
-.footer-section p {
-    margin-bottom: 1.5rem;
-    color: #ecf0f1;
-}
-
-.footer-section ul {
-    list-style: none;
-}
-
-.footer-section ul li {
-    margin-bottom: 0.75rem;
-}
-
-.footer-section ul li a {
-    color: #bdc3c7;
-    transition: color 0.3s ease;
-}
-
-.footer-section ul li a:hover {
-    color: #4a6bff;
-}
-
-.social-icons {
-    display: flex;
-    gap: 1rem;
-}
-
-.social-icons a {
-    color: white;
-    font-size: 1.2rem;
-    transition: color 0.3s ease;
-}
-
-.social-icons a:hover {
-    color: #4a6bff;
-}
-
-.footer-bottom {
-    text-align: center;
-    padding-top: 1.5rem;
-    margin-top: 2rem;
-    border-top: 1px solid #34495e;
-    color: #bdc3c7;
-    font-size: 0.9rem;
-}
-
-/* Responsive Styles */
-@media (max-width: 992px) {
-    .job-search-container {
-        flex-direction: column;
-    }
-    
-    .job-search-sidebar {
-        width: 100%;
-    }
-}
-
-@media (max-width: 768px) {
-    .nav-links {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        top: 70px;
-        left: 0;
-        right: 0;
-        background: white;
-        padding: 1rem 2rem;
-        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-        z-index: 100;
-    }
-    
-    .nav-links.active {
-        display: flex;
-    }
-    
-    .mobile-menu-btn {
-        display: block;
-    }
-    
-    .auth-buttons {
-        display: none;
-    }
-    
-    .job-header {
-        flex-direction: column;
-        gap: 1rem;
-    }
-    
-    .job-actions {
-        flex-direction: column;
-        gap: 1rem;
-        align-items: flex-start;
-    }
-    
-    .job-actions button {
-        width: 100%;
-    }
-}
-
-@media (max-width: 576px) {
-    .navbar {
-        padding: 1rem;
-    }
-    
-    .page-header {
-        padding: 3rem 1rem;
-    }
-    
-    .page-header h1 {
-        font-size: 2rem;
-    }
-    
-    .job-details {
-        flex-direction: column;
-        gap: 0.5rem;
-    }
-}
-    </style>
+    <link rel="stylesheet" href="find-work.css">
 </head>
 <body>
-    <!-- Header (same as index.html) -->
     <header>
         <nav class="navbar">
             <a href="index.html" class="logo">
@@ -511,27 +18,18 @@ footer {
             <div class="nav-links">
                 <a href="index.html">Home</a>
                 <a href="find-work.html" class="active">Find Work</a>
-                <a href="find-freelancers.html">Find Freelancers</a>
+                <a href="hiring.html">Find Freelancers</a>
                 <a href="how-it-works.html">How It Works</a>
                 <a href="resources.html">Resources</a>
             </div>
-            <div class="auth-buttons">
-                <button class="btn btn-outline" id="login-btn">Login</button>
-                <button class="btn btn-primary" id="register-btn">Sign Up</button>
-            </div>
-            <button class="mobile-menu-btn" id="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
         </nav>
     </header>
 
-    <!-- Page Header -->
     <section class="page-header">
         <h1>Find Freelance Work</h1>
-        <p>Browse thousands of freelance jobs and find your next opportunity to showcase your skills and grow your career.</p>
+        <p>Browse freelance jobs and find your next opportunity to showcase your skills and grow your career.</p>
     </section>
 
-    <!-- Page Content -->
     <div class="page-content">
         <div class="breadcrumb">
             <a href="index.html">Home</a>
@@ -539,67 +37,34 @@ footer {
             <span>Find Work</span>
         </div>
 
-        <div class="job-search-container">
+        <div class="job-search-container container">
             <div class="job-search-sidebar">
                 <div class="filter-section">
                     <h3>Job Type</h3>
                     <div class="filter-options">
-                        <div class="filter-option">
-                            <input type="checkbox" id="full-time" checked>
-                            <label for="full-time">Full-time</label>
-                        </div>
-                        <div class="filter-option">
-                            <input type="checkbox" id="part-time" checked>
-                            <label for="part-time">Part-time</label>
-                        </div>
-                        <div class="filter-option">
-                            <input type="checkbox" id="contract" checked>
-                            <label for="contract">Contract</label>
-                        </div>
-                        <div class="filter-option">
-                            <input type="checkbox" id="temporary" checked>
-                            <label for="temporary">Temporary</label>
-                        </div>
+                        <div class="filter-option"><input type="checkbox" id="full-time" checked><label for="full-time">Full-time</label></div>
+                        <div class="filter-option"><input type="checkbox" id="part-time" checked><label for="part-time">Part-time</label></div>
+                        <div class="filter-option"><input type="checkbox" id="contract" checked><label for="contract">Contract</label></div>
+                        <div class="filter-option"><input type="checkbox" id="temporary" checked><label for="temporary">Temporary</label></div>
                     </div>
                 </div>
 
                 <div class="filter-section">
                     <h3>Experience Level</h3>
                     <div class="filter-options">
-                        <div class="filter-option">
-                            <input type="checkbox" id="entry-level" checked>
-                            <label for="entry-level">Entry Level</label>
-                        </div>
-                        <div class="filter-option">
-                            <input type="checkbox" id="intermediate" checked>
-                            <label for="intermediate">Intermediate</label>
-                        </div>
-                        <div class="filter-option">
-                            <input type="checkbox" id="expert" checked>
-                            <label for="expert">Expert</label>
-                        </div>
+                        <div class="filter-option"><input type="checkbox" id="entry-level" checked><label for="entry-level">Entry Level</label></div>
+                        <div class="filter-option"><input type="checkbox" id="intermediate" checked><label for="intermediate">Intermediate</label></div>
+                        <div class="filter-option"><input type="checkbox" id="expert" checked><label for="expert">Expert</label></div>
                     </div>
                 </div>
 
                 <div class="filter-section">
                     <h3>Budget Range</h3>
                     <div class="filter-options">
-                        <div class="filter-option">
-                            <input type="checkbox" id="range1" checked>
-                            <label for="range1">$0 - $500</label>
-                        </div>
-                        <div class="filter-option">
-                            <input type="checkbox" id="range2" checked>
-                            <label for="range2">$500 - $1,000</label>
-                        </div>
-                        <div class="filter-option">
-                            <input type="checkbox" id="range3" checked>
-                            <label for="range3">$1,000 - $5,000</label>
-                        </div>
-                        <div class="filter-option">
-                            <input type="checkbox" id="range4" checked>
-                            <label for="range4">$5,000+</label>
-                        </div>
+                        <div class="filter-option"><input type="checkbox" id="range1" checked><label for="range1">$0 - $500</label></div>
+                        <div class="filter-option"><input type="checkbox" id="range2" checked><label for="range2">$500 - $1,000</label></div>
+                        <div class="filter-option"><input type="checkbox" id="range3" checked><label for="range3">$1,000 - $5,000</label></div>
+                        <div class="filter-option"><input type="checkbox" id="range4" checked><label for="range4">$5,000+</label></div>
                     </div>
                 </div>
 
@@ -607,189 +72,57 @@ footer {
             </div>
 
             <div class="job-search-main">
-                <div class="search-container" style="max-width: 100%; margin-bottom: 2rem;">
-                    <input type="text" placeholder="Search for jobs by keyword, skill, or company">
-                    <button><i class="fas fa-search"></i> Search</button>
+                <div class="job-search-top-bar">
+                    <div class="search-container">
+                        <input type="text" placeholder="Search for jobs by keyword, skill, or company">
+                        <button><i class="fas fa-search"></i> Search</button>
+                    </div>
+                    <button class="btn btn-primary" id="post-job-btn"><i class="fas fa-plus"></i> Post a Job</button>
                 </div>
 
-                <div class="job-list">
-                    <!-- Job 1 -->
-                    <div class="job-card">
-                        <span class="job-type">Full-time</span>
-                        <div class="job-header">
-                            <div class="job-info">
-                                <h3 class="job-title">Senior Web Developer</h3>
-                                <p class="job-company">TechSolutions Inc.</p>
-                            </div>
-                            <div class="job-budget">$5,000 - $7,000/month</div>
-                        </div>
-                        <p class="job-description">We're looking for an experienced web developer to join our team and help build innovative web applications for our clients. You'll work with modern technologies like React, Node.js, and MongoDB.</p>
-                        <div class="job-details">
-                            <div class="job-detail">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Remote</span>
-                            </div>
-                            <div class="job-detail">
-                                <i class="fas fa-clock"></i>
-                                <span>Posted 2 days ago</span>
-                            </div>
-                            <div class="job-detail">
-                                <i class="fas fa-briefcase"></i>
-                                <span>5+ years experience</span>
-                            </div>
-                        </div>
-                        <div class="job-skills">
-                            <span class="tag">React</span>
-                            <span class="tag">Node.js</span>
-                            <span class="tag">MongoDB</span>
-                            <span class="tag">TypeScript</span>
-                        </div>
-                        <div class="job-actions">
-                            <span>24 applicants</span>
-                            <button class="btn btn-primary">Apply Now</button>
-                        </div>
-                    </div>
-
-                    <!-- Job 2 -->
-                    <div class="job-card">
-                        <span class="job-type">Contract</span>
-                        <div class="job-header">
-                            <div class="job-info">
-                                <h3 class="job-title">UI/UX Designer</h3>
-                                <p class="job-company">CreativeMinds Agency</p>
-                            </div>
-                            <div class="job-budget">$3,000 - $4,500/project</div>
-                        </div>
-                        <p class="job-description">Looking for a talented UI/UX designer to redesign our client's e-commerce platform. Must have experience with Figma and user research methodologies.</p>
-                        <div class="job-details">
-                            <div class="job-detail">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Remote</span>
-                            </div>
-                            <div class="job-detail">
-                                <i class="fas fa-clock"></i>
-                                <span>Posted 1 week ago</span>
-                            </div>
-                            <div class="job-detail">
-                                <i class="fas fa-briefcase"></i>
-                                <span>3+ years experience</span>
-                            </div>
-                        </div>
-                        <div class="job-skills">
-                            <span class="tag">Figma</span>
-                            <span class="tag">UI/UX</span>
-                            <span class="tag">Prototyping</span>
-                            <span class="tag">User Research</span>
-                        </div>
-                        <div class="job-actions">
-                            <span>18 applicants</span>
-                            <button class="btn btn-primary">Apply Now</button>
-                        </div>
-                    </div>
-
-                    <!-- Job 3 -->
-                    <div class="job-card">
-                        <span class="job-type">Part-time</span>
-                        <div class="job-header">
-                            <div class="job-info">
-                                <h3 class="job-title">Content Writer</h3>
-                                <p class="job-company">Digital Marketing Pros</p>
-                            </div>
-                            <div class="job-budget">$25 - $35/hour</div>
-                        </div>
-                        <p class="job-description">Need a skilled content writer to create blog posts and marketing copy for our clients in the tech industry. Must have experience with SEO best practices.</p>
-                        <div class="job-details">
-                            <div class="job-detail">
-                                <i class="fas fa-map-marker-alt"></i>
-                                <span>Remote</span>
-                            </div>
-                            <div class="job-detail">
-                                <i class="fas fa-clock"></i>
-                                <span>Posted 3 days ago</span>
-                            </div>
-                            <div class="job-detail">
-                                <i class="fas fa-briefcase"></i>
-                            <span>2+ years experience</span>
-                        </div>
-                    </div>
-                    <div class="job-skills">
-                        <span class="tag">Content Writing</span>
-                        <span class="tag">SEO</span>
-                        <span class="tag">Blogging</span>
-                        <span class="tag">Copywriting</span>
-                    </div>
-                    <div class="job-actions">
-                        <span>32 applicants</span>
-                        <button class="btn btn-primary">Apply Now</button>
-                    </div>
-                </div>
-
-                <!-- Job 4 -->
-                <div class="job-card">
-                    <span class="job-type">Full-time</span>
-                    <div class="job-header">
-                        <div class="job-info">
-                            <h3 class="job-title">DevOps Engineer</h3>
-                            <p class="job-company">CloudScale Technologies</p>
-                        </div>
-                        <div class="job-budget">$6,000 - $8,500/month</div>
-                    </div>
-                    <p class="job-description">Seeking a DevOps engineer to help automate our deployment processes and maintain our cloud infrastructure. Experience with AWS, Kubernetes, and CI/CD pipelines required.</p>
-                    <div class="job-details">
-                        <div class="job-detail">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Remote (US timezone)</span>
-                        </div>
-                        <div class="job-detail">
-                            <i class="fas fa-clock"></i>
-                            <span>Posted 5 days ago</span>
-                        </div>
-                        <div class="job-detail">
-                            <i class="fas fa-briefcase"></i>
-                            <span>4+ years experience</span>
-                        </div>
-                    </div>
-                    <div class="job-skills">
-                        <span class="tag">AWS</span>
-                        <span class="tag">Kubernetes</span>
-                        <span class="tag">Docker</span>
-                        <span class="tag">CI/CD</span>
-                    </div>
-                    <div class="job-actions">
-                        <span>15 applicants</span>
-                        <button class="btn btn-primary">Apply Now</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="pagination">
-                <button class="page-btn active">1</button>
-                <button class="page-btn">2</button>
-                <button class="page-btn">3</button>
-                <button class="page-btn">4</button>
-                <button class="page-btn">5</button>
-                <button class="page-btn">Next</button>
+                <div class="job-list"></div>
             </div>
         </div>
     </div>
+
+    <div id="post-job-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Post a New Job</h2>
+            <form id="job-form">
+                <div class="form-group"><label for="job-title">Job Title*</label><input type="text" id="job-title" required></div>
+                <div class="form-group"><label for="job-company">Company Name*</label><input type="text" id="job-company" required></div>
+                <div class="form-group"><label for="job-description">Job Description*</label><textarea id="job-description" rows="5" required></textarea></div>
+                <div class="form-group"><label for="job-type">Job Type*</label>
+                    <select id="job-type" required>
+                        <option value="">Select job type</option>
+                        <option value="Full-time">Full-time</option>
+                        <option value="Part-time">Part-time</option>
+                        <option value="Contract">Contract</option>
+                        <option value="Temporary">Temporary</option>
+                    </select>
+                </div>
+                <div class="form-group"><label for="job-budget">Budget/Salary*</label><input type="text" id="job-budget" placeholder="e.g., $5,000 - $7,000/month" required></div>
+                <div class="form-group"><label for="job-location">Location*</label><input type="text" id="job-location" placeholder="e.g., Remote, New York, etc." required></div>
+                <div class="form-group"><label for="job-experience">Experience Level*</label>
+                    <select id="job-experience" required>
+                        <option value="">Select experience level</option>
+                        <option value="Entry Level">Entry Level</option>
+                        <option value="Intermediate">Intermediate</option>
+                        <option value="Expert">Expert</option>
+                    </select>
+                </div>
+                <div class="form-group"><label for="job-skills">Required Skills*</label><input type="text" id="job-skills" placeholder="e.g., React, Node.js" required></div>
+                <div class="form-group">
+  <label for="job-email">Contact Email*</label>
+  <input type="email" id="job-email" placeholder="e.g., user@example.com" required>
 </div>
 
-<!-- Footer (same as index.html) -->
-<footer>
-    <!-- Footer content from index.html -->
-</footer>
+                <button type="submit" class="btn btn-primary" style="width: 100%; margin-top: 1rem;">Post Job</button>
+            </form>
+        </div>
+    </div>
 
-<!-- Modals (same as index.html) -->
-<div class="modal" id="login-modal">
-    <!-- Login modal content from index.html -->
-</div>
-
-<div class="modal" id="register-modal">
-    <!-- Register modal content from index.html -->
-</div>
-
-<!-- JavaScript (same as index.html) -->
-<script>
-    // All JavaScript from index.html
-</script>
-</body> </html>
+    <script src="find-work.js"></script>
+</body>
+</html>

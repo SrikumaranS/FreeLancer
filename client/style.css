@@ -1162,3 +1162,43 @@ footer {
   background-color: #f1f5f9;
   color: var(--primary);
 }
+
+.freelancer-card {
+  background: white;
+  padding: 1rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  text-align: center;
+}
+
+.freelancer-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.5rem;
+}
+
+.freelancer-card h3 {
+  margin: 0.5rem 0 0.25rem;
+  color: #333;
+}
+
+.freelancer-card .title {
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.freelancer-card .skills {
+  margin-top: 0.5rem;
+}
+
+.freelancer-card .skill {
+  display: inline-block;
+  background: #eef1ff;
+  padding: 0.3rem 0.6rem;
+  margin: 0.2rem;
+  border-radius: 4px;
+  font-size: 0.85rem;
+  color: #4a6bff;
+}

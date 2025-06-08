@@ -1,0 +1,48 @@
+<!-- payment.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FreelanceHub | Wallet</title>
+  <link rel="stylesheet" href="payment.css">
+</head>
+<body>
+  <div class="wallet-container">
+    <h1>Escrow Wallet</h1>
+    <div class="wallet-section">
+      <div>
+        <h3>Freelancer Wallet</h3>
+        <p><strong>Balance:</strong> ₹<span id="freelancer-balance">0</span></p>
+      </div>
+      <div>
+        <h3>Platform Holding</h3>
+        <p><strong>Escrow:</strong> ₹<span id="escrow-balance">0</span></p>
+      </div>
+      <div>
+        <h3>Employer Wallet</h3>
+        <p><strong>Balance:</strong> ₹<span id="employer-balance">5000</span></p>
+      </div>
+    </div>
+
+    <form id="fund-escrow-form">
+      <h2>1. Fund Escrow (by Employer)</h2>
+      <input type="number" id="escrow-amount" placeholder="Enter amount to hold in escrow">
+      <button type="submit">Add to Escrow</button>
+    </form>
+
+    <form id="release-payment-form">
+      <h2>2. Release Payment (by Platform)</h2>
+      <button type="submit">Release Escrow to Freelancer</button>
+    </form>
+
+    <form id="withdraw-form">
+      <h2>3. Withdraw to Bank (by Freelancer)</h2>
+      <input type="number" id="withdraw-amount" placeholder="Enter amount to withdraw">
+      <button type="submit">Withdraw</button>
+    </form>
+  </div>
+
+  <script src="payment.js"></script>
+</body>
+</html>

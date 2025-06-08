@@ -74,11 +74,13 @@
                     </a>
                 </div>
                 <div class="step">
+                    <a href="collaboration.html" style="text-decoration: none;">
                     <div class="step-icon">
                         <i class="fas fa-handshake"></i>
                     </div>
                     <h3>Start Collaborating</h3>
                     <p>Use our secure platform to communicate, share files, and manage payments.</p>
+                    </a>
                 </div>
             </div>
         </section>
@@ -115,10 +117,39 @@
                     <p>Browse through our community of skilled professionals ready to work on your projects.</p>
                 </div>
                 <div class="freelancer-cards" id="freelancer-cards">
-                    <!-- Freelancer cards will be loaded dynamically -->
+                    <script>
+                        document.addEventListener("DOMContentLoaded", () => {
+  const container = document.getElementById("freelancer-cards");
+  const freelancers = JSON.parse(localStorage.getItem("freelancerProfiles")) || [];
+
+  if (!container) return;
+
+  if (freelancers.length === 0) {
+    container.innerHTML = "<p>No top freelancers available yet.</p>";
+    return;
+  }
+
+  container.innerHTML = freelancers
+    .slice(0, 6) // Show only top 6 on homepage
+    .map(freelancer => `
+      <div class="freelancer-card">
+        <img src="${freelancer.profilePic || 'https://via.placeholder.com/150'}" alt="${freelancer.name}" />
+        <h3>${freelancer.name}</h3>
+        <p class="title">${freelancer.title || 'Freelancer'}</p>
+        <p class="location"><i class="fas fa-map-marker-alt"></i> ${freelancer.location || 'Not specified'}</p>
+        <div class="skills">
+          ${freelancer.skills && freelancer.skills.length
+            ? freelancer.skills.slice(0, 4).map(skill => `<span class="skill">${skill}</span>`).join('')
+            : '<p>No skills</p>'}
+        </div>
+      </div>
+    `).join('');
+});
+
+                    </script>
                 </div>
                 <div class="view-all">
-                    <a href="find-freelancers.html" class="btn btn-outline">Browse All Freelancers</a>
+                    <a href="hiring.html" class="btn btn-outline">Browse All Freelancers</a>
                 </div>
             </div>
         </section>
@@ -199,5 +230,7 @@
 <!-- Remove any duplicate Firebase scripts -->
 <script type="module" src="auth.js"></script>
 <script src="main.js"></script>
+<script src="feature.js"></script>
+
 </body>
 </html>
